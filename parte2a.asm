@@ -1,9 +1,32 @@
 .data
 #LAB2 DE ORGA PARTE 2A - SEBASTIAN ORDENES
+
+
 .text
-addi $t0, $t0, 5  #PRIMER FACTOR 
-addi $t1, $t1, 90 #SEGUNDO FACTOR 
-addI $t2, $t2, 0 #REGISTRO TEMPORAL DONDE IREMOS ALMACENANDO EL RESULTADO
+	.globl main
+		addi $t0, $t0, 14 # primer factor 
+		addi $t1, $t1, 5 #SEGUNDO FACTOR 
+		addi $t2, $t2, 0 #REGISTRO TEMPORAL DONDE IREMOS ALMACENANDO EL RESULTADO
+		
+	main:
+	jal multiplicacion
+	
+	syscall
+	j exit 
+	
+	
+
+
+
+
+
+
+
+.globl multiplicacion
+multiplicacion:
+
+
+
 #verifica cual de los dos factores es el mayor, si es el primero se salta a la etiqueta primeromayor
 bgt $t0,$t1, primeromayor
 #de no ser asi trabajaremos con el segundo factor, ya que el que sea menor ira disminuyendo hasta llegar a cero
@@ -23,10 +46,12 @@ add $t2, $t2, $t0
 j primeromayor
 
 
-#llamado final para cualquiera de las dos opciones anteriores y una impresion por pantalla
+#llamado final para cualquiera de las dos opciones anteriores y uego retornamos a la siguiente instruccion, almacenada en $ra
  final:
- li $v0,1
- move $a0,$t2
- syscall
+ 	li $v0, 1
+ 	move $a0, $t2
+	jr $ra
+
   
+exit:
  
