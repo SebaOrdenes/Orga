@@ -1,12 +1,17 @@
 .data
 #LAB2 DE ORGA PARTE 2A - SEBASTIAN ORDENES
-
+	primerfactor: .word 14
+	segundofactor: .word 5
+	contador: .word 0
 
 .text
 	.globl main
-		addi $t0, $t0, 14 # primer factor 
-		addi $t1, $t1, 5 #SEGUNDO FACTOR 
-		addi $t2, $t2, 0 #REGISTRO TEMPORAL DONDE IREMOS ALMACENANDO EL RESULTADO
+		
+		lw $t0, primerfactor
+		lw $t1, segundofactor
+		lw $t2, contador
+		
+		
 		
 	main:
 	jal multiplicacion
